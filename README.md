@@ -34,7 +34,7 @@ Discard_noncoding_annotation.R
 
 **Convert annotation from GFF3 to GTF format**  
 ```bash
-gffread WS268_Wormbase_coding.gff3 -T -o WS268_Wormbase_coding.gtf
+gffread GRCm38.p6.Refseq.coding.gff -T -o GRCm38.p6.Refseq.coding.gtf
 # -T          - convert gff/gtf
 ```
 </details>
