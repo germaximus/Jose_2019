@@ -40,5 +40,10 @@ gffread GRCm38.p6.Refseq.coding.gff -T -o GRCm38.p6.Refseq.coding.gtf
 </details>
 
 
-
+<details><summary><b>Building genomic index</b></summary>
+  
+```bash  
+STAR --runThreadN 40 --runMode genomeGenerate --genomeDir ./Mouse_index/ --genomeFastaFiles ./GRCm38.p6.genome.fa --sjdbGTFfile ./GRCm38.p6.Refseq.coding.gtf
+```
+</details>
 
