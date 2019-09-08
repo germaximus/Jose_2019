@@ -13,10 +13,10 @@ Mouse genomic sequences and annotation files (GRCm38.p6) were downloaded from th
 
 | files               | MD5 check sum (unzipped)         | Description                                               |
 | ------------------- |:--------------------------------:| ----------------------------------------------------------|
-| GRCm38.p6.rna.fa    | b22037bd202465ce84cee9f6409331e8 | RNA in fasta format, coding + noncoding                   |
-| GRCm38.p6.genome.fa | 49e0e5a638620d90990be88c81030923 | Genome sequence (nuclear genome only, no sex chromosomes) |
-| GRCm38.p6.gbk       | adc1125bf6b2c3b5a52414fe2fe98ac7 | RNA in gene bank format, coding + noncoding               |
-| GRCm38.p6.gff3      | ab982471b0b29ebde3d966ec2424253f | Genome annotation                                         | 
+| GRCm38.p6.rna.fa    | e90edf06df1dade6f60126c694d58ec6 | RNA in fasta format, coding + noncoding                   |
+| GRCm38.p6.genome.fa | 632b214701fb60537eb5f9bf1bf37983 | Genome sequence (nuclear genome only, no sex chromosomes) |
+| GRCm38.p6.gbk       | c18a112a3b16049f3091f862c2b32024 | RNA in gene bank format, coding + noncoding               |
+| GRCm38.p6.gff3      | e39f2eaf16e41e62b4e6564f36a5c437 | Genome annotation                                         | 
 
 
 <details><summary><b>Customizing genome annotation</b></summary>  
