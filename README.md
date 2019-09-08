@@ -56,3 +56,14 @@ cutadapt -j 20 -m 50 -a CTGTCTCTTATACACATCT -A CTGTCTCTTATACACATCT -o trimmed_1.
 # -m      - discard read pair if any of the mates if shorter than 50 nucleotides after adapter trimming
 ```
 </details>
+
+<details><summary><b>Read mapping and counting with STAR</b></summary>
+     
+```bash
+STAR --genomeLoad LoadAndExit --genomeDir ../STAR-2.7.2b/Mouse_index/ 	# load genome once in the shared memory
+STAR --runThreadN 40 --outSAMtype BAM Unsorted --outSAMmultNmax 1 --quantMode GeneCounts --genomeLoad LoadAndKeep --genomeDir ../STAR-2.7.2b/Mouse_index/ --readFilesCommand gunzip -c --readFilesIn trimmed_1.fastq trimmed_2.fastq --outFileNamePrefix ./OUT_folder 
+STAR --genomeLoad Remove 	# remove loaded genome from shared memory
+# ipcs - check shared memory consumption
+# ipcrm - remove object from shared memory
+```
+</details>
