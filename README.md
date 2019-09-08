@@ -48,7 +48,7 @@ STAR --runThreadN 40 --runMode genomeGenerate --genomeDir ./Mouse_index/ --genom
 </details>
 
 ### mRNA-seq sequencing reads filtering and mapping   
-<details><summary><b>Illumina adapters trimming</b></summary>
+<details><summary><b>Illumina-Nextera adapters trimming</b></summary>
 
 ```bash
 cutadapt -j 20 -m 50 -a CTGTCTCTTATACACATCT -A CTGTCTCTTATACACATCT -o trimmed_1.fq.gz -p trimmed_2.fq.gz read.1.fq.gz read.2.fq.gz
