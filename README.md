@@ -53,6 +53,6 @@ STAR --runThreadN 40 --runMode genomeGenerate --genomeDir ./Mouse_index/ --genom
 ```bash
 cutadapt -j 20 -m 50 -a CTGTCTCTTATACACATCT -A CTGTCTCTTATACACATCT -o trimmed_1.fq.gz -p trimmed_2.fq.gz read.1.fq.gz read.2.fq.gz
 # -j      - number of threads
-# -m      - discard read pair if any of the mates if shorter than 75 nucleotides after adapter trimming
+# -m      - discard read pair if any of the mates if shorter than 50 nucleotides after adapter trimming
 ```
 </details>
