@@ -9,7 +9,8 @@ Transcriptome (polyA captured mRNA-seq) samples were sequenced in PE100 mode on 
 Raw sequencing files are available from [GEO]().
 
 ### Preparing genome annotation and index files
-Mouse genomic sequences and annotation files (GRCm38.p6) were downloaded from the [NCBI repository](ftp://ftp.ncbi.nih.gov/genomes/M_musculus/). To obtain genome assembly, download fasta files of individual chromosomes from ```Assembled_chromosomes/seq/``` folder and concatenate them in the ascending order (omit mitochondrial chromosome and sex chromosomes). Edit chromosome names to match annotation names in gff3 (for example convert ```>ref|NC_000067.6|``` to ```>NC_000067.6```) and say thanks to the NIH staff for letting you do it.  
+Mouse genomic sequences and annotation files (GRCm38.p6) were downloaded from the [NCBI repository](ftp://ftp.ncbi.nih.gov/genomes/M_musculus/). 
+To obtain genome assembly, download fasta files of individual chromosomes from ```Assembled_chromosomes/seq/``` folder and concatenate them in the ascending order (omit mitochondrial chromosome and sex chromosomes). Edit chromosome names to match annotation names in gff3 (for example convert ```>ref|NC_000067.6|``` to ```>NC_000067.6```) and say thanks to the NIH staff for letting you do it.  
 
 | files               | MD5 check sum (unzipped)         | Description                                               |
 | ------------------- |:--------------------------------:| ----------------------------------------------------------|
