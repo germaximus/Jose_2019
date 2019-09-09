@@ -67,3 +67,12 @@ STAR --genomeLoad Remove 	# remove loaded genome from shared memory
 # ipcrm - remove object from shared memory
 ```
 </details>
+
+<details><summary><b>Principal component analysis</b></summary>
+ 
+One sample is a clear outlier. Second plot shows PCA after the outlier was removed
+
+<img src="Figures/PCA_all.png" width="400">
+<img src="Figures/PCA_noOutlier.png" width="400"> 
+</details>
+
