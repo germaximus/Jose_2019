@@ -100,6 +100,61 @@ write.csv(edl, file="EDL_old_vs_young.csv")
 write.csv(ageDiff_edl_vs_sol, file="ageDiff_edl_vs_sol.csv")
 
 
+# Broad GSEA uses human gene sets and human gene names even for gene sets generated from mouse/rat data 
+# To use it for different species, gene names have to be converted to human orthologs.
+# Note: download Mouse gene name remapping table from Broad website. Current verison: MsigDB v.7.0.
+mouse2human <- read.table(file="./GSEA/Mouse_Gene_Symbol_Remapping_MSigDB.v7.0.chip", sep="\t", header=T, fill=T, quote="") %>% .[,1:2] %>% setNames(c("mouse",'human'))
+
+output_sol <- merge(as.data.frame(sol), mouse2human, by.x='row.names', by.y='mouse', sort = F)
+output_edl <- merge(as.data.frame(edl), mouse2human, by.x='row.names', by.y='mouse', sort = F)
+
+colnames(output_sol)[1] <- 'Mouse_gene_symbol'
+colnames(output_sol)[8] <- 'Human_ortholog'
+colnames(output_edl)[1] <- 'Mouse_gene_symbol'
+colnames(output_edl)[8] <- 'Human_ortholog'
+
+for(i in 1:nrow(output_sol)) {
+  pval <- output_sol$pvalue[i]
+  if(pval %in% output_sol$pvalue[duplicated(output_sol$pvalue)]) { 
+    iteration <- 0
+    repeat {
+      iteration <- iteration + 1
+      pval <- pval + iteration * (output_sol$pvalue[i]/10**14)
+      if (!(pval %in% output_sol$pvalue)) {
+        output_sol$pvalue[i] <- pval
+        break
+      }
+    }
+  }
+}
+
+for(i in 1:nrow(output_edl)) {
+  pval <- output_edl$pvalue[i]
+  if(pval %in% output_edl$pvalue[duplicated(output_edl$pvalue)]) { 
+    iteration <- 0
+    repeat {
+      iteration <- iteration + 1
+      pval <- pval + iteration * (output_edl$pvalue[i]/10**14)
+      if (!(pval %in% output_edl$pvalue)) {
+        output_edl$pvalue[i] <- pval
+        break
+      }
+    }
+  }
+}
+
+# write rank files for GSEA
+output_sol$rank <- -sign(output_sol$log2FoldChange) * log10(output_sol$pvalue)
+output_edl$rank <- -sign(output_edl$log2FoldChange) * log10(output_edl$pvalue)
+
+rank_sol <- output_sol[, c('Human_ortholog', 'rank')] %>% setNames(c('NAME','RANK'))
+rank_edl <- output_edl[, c('Human_ortholog', 'rank')] %>% setNames(c('NAME','RANK'))
+rank_sol <- rank_sol[order(rank_sol$RANK),]
+rank_edl <- rank_edl[order(rank_edl$RANK),]
+#sanity check# length(unique(rank$RANK)) == length(rank$RANK)
+write.table(rank_sol, file="./GSEA/sol_gsea.rnk", row.names = F, quote = F, sep = "\t")
+write.table(rank_edl, file="./GSEA/edl_gsea.rnk", row.names = F, quote = F, sep = "\t")
+
 
 
 
